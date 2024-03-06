@@ -6,7 +6,7 @@ from collections import defaultdict
 from functools import partialmethod, reduce
 from itertools import accumulate
 import numpy as np
-
+#this is ok understand its dependency
 from teenygrad.helpers import ImageDType, argfix, make_pair, getenv, IMAGE, DEBUG, flatten, DType, dtypes, prod, all_int, round_up
 from teenygrad.lazy import LazyBuffer
 from teenygrad.ops import Device, LoadOps
