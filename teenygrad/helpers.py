@@ -6,7 +6,10 @@ from dataclasses import dataclass
 
 OSX = platform.system() == "Darwin"
 def dedup(x): return list(dict.fromkeys(x))   # retains list orderi
+
 def argfix(*x): return tuple(x[0]) if x and x[0].__class__ in (tuple, list) else x
+#takes variable positional arguments (*x). It checks if the first argument (x[0]) exists and if its type is either a tuple or a list. If it is, the function returns a tuple containing the elements of the first argument. If not, it returns the arguments unchanged.
+
 def make_pair(x:Union[int, Tuple[int, ...]], cnt=2) -> Tuple[int, ...]: return (x,)*cnt if isinstance(x, int) else x
 def flatten(l:Iterator): return [item for sublist in l for item in sublist]
 def argsort(x): return type(x)(sorted(range(len(x)), key=x.__getitem__)) # https://stackoverflow.com/questions/3382352/equivalent-of-numpy-argsort-in-basic-python
@@ -57,5 +60,3 @@ class dtypes:
   bfloat16: Final[DType] = DType(9, 2, "__bf16", None)
 
 DTYPES_DICT = {k: v for k, v in dtypes.__dict__.items() if not k.startswith('__') and not callable(v) and not v.__class__ == staticmethod}
-
-PtrDType, ImageDType, IMAGE = None, None, 0  # junk to remove
